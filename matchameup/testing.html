@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MatchaMeUp - Brewing Happiness</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: #f5f8f4;
+      color: #1f3d2f;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #4a7c59;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      background: rgba(250, 250, 250, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      z-index: 1000;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #2e5832; /* darker green */
+      letter-spacing: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li {
+      font-weight: 600;
+    }
+    nav ul li a {
+      padding: 0.25rem 0.5rem;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #2e5832;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #dbe8d0;
+      text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+      padding: 0 1rem;
+      text-align: center;
+      background:
+  linear-gradient(rgba(245, 248, 244, 0.6), rgba(245, 248, 244, 0.6)),
+  url('image.jpg') center center/cover no-repeat;
+
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Georgia', serif;
+      color: #2e5832; /* darker text */
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+    .hero button {
+      background: #4a7c59;
+      border: none;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(74,124,89,0.4);
+      transition: background 0.3s ease;
+    }
+    .hero button:hover {
+      background: #3f6746;
+    }
+    .hero button.order-btn {
+      background: #2e5832;
+      margin-top: 1rem;
+    }
+    .hero button.order-btn:hover {
+      background: #244424;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-family: 'Georgia', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #3f6746;
+      text-align: center;
+      letter-spacing: 1.5px;
+    }
+    section p {
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+      color: #536b4b;
+    }
+    
+    /* Menu */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .menu-item {
+      background: #eaf0e6;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(74,124,89,0.15);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
+    .menu-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .menu-item h3 {
+      margin-bottom: 0.5rem;
+      color: #2e5832;
+    }
+    .menu-item p {
+      font-size: 0.9rem;
+      color: #536b4b;
+      margin-bottom: 1rem;
+    }
+    .menu-item .price {
+      font-weight: 700;
+      color: #3f6746;
+      font-size: 1.1rem;
+    }
+
+    /* About */
+    .about-text {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #4a6b3f;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact-info {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #3f6746;
+    }
+    .contact-info a {
+      color: #4a7c59;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #e4ecd8;
+      color: #3f6746;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-top: 3rem;
+    }
+
+    /* Responsive */
+    @media(max-width: 600px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MatchaMeUp</div>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <h1>MatchaMeUp</h1>
+    <p>Crafting Moments with Every Sip</p>
+    <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Explore Our Menu</button>
+    <button 
+      class="order-btn"
+      onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSf8OSBw4-xFfcySDNPyKMu6QIlDoIDwnNYlJiXY5_TSXFliCw/viewform', '_blank')"
+    >
+      Order Now
+    </button>
+  </section>
+
+ <section id="menu">
+  <h2>Our Matcha Menu</h2>
+  <p>Handcrafted matcha beverages made fresh to your liking.</p>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <img src="banana-pudding.jpg" alt="Banana Pudding Matcha Latte" />
+      <h3>Banana Pudding Matcha Latte 🍌</h3>
+      <p>Creamy banana pudding meets earthy matcha for a dessert in a cup.</p>
+      <div class="price">$8.50 🔥🔥</div>
+    </div>
+    <div class="menu-item">
+      <img src="matcha-tiramisu.jpg" alt="Matcha Tiramisu Latte" />
+      <h3>Matcha Tiramisu Latte 🍰</h3>
+      <p>A luxurious blend of matcha and tiramisu cream for an indulgent treat.</p>
+      <div class="price">$8.50 🔥🔥</div>
+    </div>
+    <div class="menu-item">
+      <img src="strawberry-shortcake.jpg" alt="Strawberry Shortcake Matcha Latte" />
+      <h3>Strawberry Shortcake Matcha Latte 🍓</h3>
+      <p>Sweet and creamy matcha latte inspired by classic strawberry shortcake.</p>
+      <div class="price">$8.00</div>
+    </div>
+    <div class="menu-item">
+      <img src="mango-matcha.jpg" alt="Mango Matcha Latte" />
+      <h3>Mango Matcha Latte 🥭</h3>
+      <p>Fresh mango puree blended smoothly with our signature matcha.</p>
+      <div class="price">$8.00</div>
+    </div>
+    <div class="menu-item">
+      <img src="coconut-matcha.jpg" alt="Coconut Matcha Latte" />
+      <h3>Coconut Matcha Latte 🥥</h3>
+      <p>Creamy coconut milk combined with bold matcha flavor.</p>
+      <div class="price">$7.00</div>
+    </div>
+    <div class="menu-item">
+      <img src="cheese-matcha.jpg" alt="Cheese Matcha Latte" />
+      <h3>Cheese Matcha Latte</h3>
+      <p>Bold matcha topped with a luscious cheese foam for a savory-sweet experience.</p>
+      <div class="price">$7.50</div>
+    </div>
+  </div>
+</section>
+
+  <section id="about">
+    <h2>About MatchaMeUp</h2>
+    <p class="about-text">
+      At MatchaMeUp, we believe in brewing happiness with every cup of matcha. 
+      Sourced from the finest tea leaves and prepared with passion, our beverages bring tradition and modern flair together. 
+      We are dedicated to quality, sustainability, and community — inviting you to join us on a refreshing journey.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Social Media:</h2>
+    <p class="contact-info">
+      <a href="https://www.instagram.com/matchameupsg/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #4a7c59; font-weight: bold; text-decoration: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4a7c59" viewBox="0 0 24 24">
+          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.5-.75a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
+        </svg>
+        matchameupsg
+      </a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 MatchaMeUp. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
